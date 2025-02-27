@@ -194,7 +194,7 @@ void diffusion_decay_solver__constant_coefficients_LOD_3D( Microenvironment& M, 
 	// x-diffusion 
 	
 	M.apply_dirichlet_conditions();
-	#pragma omp parallel for 
+	#pragma omp parallel for collapse(2)
 	for( unsigned int k=0; k < M.mesh.z_coordinates.size() ; k++ )
 	{
 		for( unsigned int j=0; j < M.mesh.y_coordinates.size() ; j++ )
@@ -224,7 +224,7 @@ void diffusion_decay_solver__constant_coefficients_LOD_3D( Microenvironment& M, 
 	// y-diffusion 
 
 	M.apply_dirichlet_conditions();
-	#pragma omp parallel for 
+	#pragma omp parallel for collapse(2)
 	for( unsigned int k=0; k < M.mesh.z_coordinates.size() ; k++ )
 	{
 		for( unsigned int i=0; i < M.mesh.x_coordinates.size() ; i++ )
@@ -258,7 +258,7 @@ void diffusion_decay_solver__constant_coefficients_LOD_3D( Microenvironment& M, 
  // z-diffusion 
 
 	M.apply_dirichlet_conditions();
- #pragma omp parallel for 
+ #pragma omp parallel for collapse(2)
  for( unsigned int j=0; j < M.mesh.y_coordinates.size() ; j++ )
  {
 	 
